@@ -7,6 +7,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProductsComponent } from './components/products/products.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { ProductCardComponent } from './components/products/product-card/product-card.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -14,11 +17,14 @@ import { OrdersComponent } from './components/orders/orders.component';
     LoginComponent,
     RegisterComponent,
     ProductsComponent,
-    OrdersComponent
+    OrdersComponent,
+    ProductCardComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

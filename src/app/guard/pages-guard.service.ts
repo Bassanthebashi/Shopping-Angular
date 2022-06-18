@@ -7,7 +7,7 @@ import { AuthService } from '../auth-service/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginRegGuardService {
+export class PagesGuardService  {
 
   constructor(private router:Router,private auth:AuthService ) { }
   canActivate(
@@ -19,9 +19,9 @@ export class LoginRegGuardService {
     | boolean
     | UrlTree {
         const token = this.auth.currentUser();
-        if(!token) return true;
+        if(token) return true;
 
-        this.router.navigate(["/"]);
+        this.router.navigate(["login"]);
         return false;
     }
 }

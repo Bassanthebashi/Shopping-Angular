@@ -1,1 +1,11 @@
-<p>products works!</p>
+<div class="container">
+    <h1 class="title">School tools</h1>
+    <p class="quote">Let us pick up our books and our pens.
+        They are our most powerful weapons. One child, one teacher,
+        one book and one pen can change the world.</p>
+    <div class="gallery">
+        <div *ngFor="let product of products">
+            <app-product-card [product]="product"></app-product-card>
+        </div>
+    </div>
+</div>

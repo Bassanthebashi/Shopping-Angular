@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background-color:#f6f6f2;
+    font-family: "indie", sans-serif;
+    color: #388087;
+    height: 97vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@font-face {
+    font-family: indie;
+    src: url(./assets/Fonts/IndieFlower-Regular.ttf);
+    font-weight: bold;
+  }

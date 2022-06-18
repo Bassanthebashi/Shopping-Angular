@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    box-shadow: 0 0 10px #6fb3b8;
+    padding: 20px;
+   background-color: white;
+   margin: 1.5vw;
+}
+.info{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+}
+button{
+    background-color: #388087;
+    color: white;
+    width: 110px;
+    height: 35px;
+    border:none;
+    border-radius: 3px;
+   font-weight: bold;
+   padding: 5px;
+    
+}
+.image img{
+    width: 200px;
+}
