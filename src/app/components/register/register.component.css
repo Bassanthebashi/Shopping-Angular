@@ -36,7 +36,7 @@ h1{
 
 }
 #regButton{
-    margin-top: 1vh;
+    margin-top: 2.8vh !important;
     background-color: #388087;
     color: white;
     width: 100px;

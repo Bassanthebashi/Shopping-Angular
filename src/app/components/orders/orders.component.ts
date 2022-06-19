@@ -35,5 +35,18 @@ orders: Order []=[]
       }
     })
   }
+  Reject(orderId:string){
+    this.http.RejectOrder(orderId).subscribe({
+      next:(mess)=>{console.log(mess);
+       
+       this.orders.map(e=>{
+        if(e.id==orderId)
+        e.approval=false;})
+       
+      },
+      error:(err)=>{console.log(err);
+      }
+    })
+  }
 
 }

@@ -12,6 +12,9 @@
                     <div *ngIf="form.get('email')?.errors?.['required']">
                         Required
                     </div>
+                    <div *ngIf="form.get('email')?.errors?.['email']">
+                        invalid email
+                    </div>
                 </div>
 
             </div>
@@ -41,9 +44,15 @@
                     <div *ngIf="form.get('password')?.errors?.['required']">
                         Required
                     </div>
-
+                    <div *ngIf="form.get('password')?.errors?.['pattern']">
+                        Password must be at least 6 chars with lower & upper & special character
+                    </div>
                 </div>
-                <div *ngIf="wrongUser" class="err">{{errorMessage}}</div>
+                <div *ngIf="wrongUser" class="err">
+                    <ng-container *ngFor="let e of errorMessage">
+                        {{e}}
+                    </ng-container>
+                </div>
             </div>
 
             <button id="regButton" (click)="Reg()">Sign Up</button>

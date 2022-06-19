@@ -21,6 +21,9 @@ export class HttpClientService {
   ApproveOrder(orderId:string){
     return this.http.post("https://localhost:7085/api/Order/Approve/"+orderId,orderId);
   }
+  RejectOrder(orderId:string){
+    return this.http.post("https://localhost:7085/api/Order/Reject/"+orderId,orderId);
+  }
   SubmitOrder(order:Object ){
     
     return this.http.post("https://localhost:7085/api/Order",order)
