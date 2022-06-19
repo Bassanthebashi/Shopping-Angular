@@ -43,7 +43,8 @@ export class CartComponent {
     
     this.http.SubmitOrder(order).subscribe({
       next:(data)=>{
-        this.products=[]
+        this.products=[];
+        this.carServ.cartList=[];
         
       },
       error:(err)=>{

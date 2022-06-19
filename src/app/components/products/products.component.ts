@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/Models/Product';
 import { HttpClientService } from 'src/app/services/http-client.service';
-import { CartComponent } from '../cart/cart.component';
-import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import { CartService } from 'src/app/services/cart.service';
+
+
 
 @Component({
   selector: 'app-products',
@@ -12,8 +11,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class ProductsComponent implements OnInit {
  products:Product[]=[]
-  constructor(private httpClient:HttpClientService,private modalService: NgbModal,
-    private cartserv:CartService) { }
+  constructor(private httpClient:HttpClientService) { }
 
   ngOnInit(): void {
     this.httpClient.getProducts().subscribe({
@@ -28,10 +26,6 @@ export class ProductsComponent implements OnInit {
       }
     })
   }
-  open() {
-    const modalRef = this.modalService.open(CartComponent);
-    
-    modalRef.componentInstance.products = this.cartserv.cartList;
-  }
+  
 
 }

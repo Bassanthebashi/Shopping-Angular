@@ -1,6 +1,7 @@
 <div class="container">
   <h1>Orders</h1>
-  <table class="table table-striped">
+  <p *ngIf="orders.length==0">No orders!</p>
+  <table class="table table-hover" *ngIf="orders.length!=0">
     <thead>
       <tr>
         <th scope="col">Order Number</th>
@@ -19,7 +20,8 @@
           <td>{{orderitem.productQuantity}}</td>
           <td>{{orderitem.product.stock}} </td>
           <td [ngClass]="{'green':order.approval==true,
-          'red':order.approval==false}"><button *ngIf="x==0" (click)="Approve(order.id)">A</button></td>
+          'red':order.approval==false}" ><button  *ngIf="x==0" (click)="Approve(order.id)"
+           >A</button></td>
         </tr>
       </ng-container>
     </tbody>

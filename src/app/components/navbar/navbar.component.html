@@ -1,6 +1,6 @@
-<div class="topnav">
+<div class="topnav" *ngIf="isLogged()">
+    <a class="" (click)="open()">Cart</a>
     <a  routerLink="">Products</a>
-    <a  routerLink="orders">Orders</a>
+    <a  routerLink="orders" *ngIf="isAdmin()">Orders</a>
     <a  (click)="logout()">Log out</a>
-    
   </div>
