@@ -27,8 +27,9 @@ orders: Order []=[]
   }
   Approve(orderId:string){
     this.http.ApproveOrder(orderId).subscribe({
-      next:(mess)=>{console.log(mess);
-       
+      next:(mess)=>{
+        console.log("bassant");
+       this.GetOrders();
         
       },
       error:(err)=>{console.log(err);
@@ -38,7 +39,7 @@ orders: Order []=[]
   Reject(orderId:string){
     this.http.RejectOrder(orderId).subscribe({
       next:(mess)=>{console.log(mess);
-       
+        this.GetOrders();
         
        
       },
