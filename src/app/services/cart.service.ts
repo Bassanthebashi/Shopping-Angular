@@ -11,7 +11,7 @@ AddToCart( product:Product){
   var flag=1;
   this.cartList.map(i=>{
     if(i.product.id==product.id){
-      i.Quantity+=1;
+      i.Quantity=Number(i.Quantity)+1;
       flag=0
     }
     
