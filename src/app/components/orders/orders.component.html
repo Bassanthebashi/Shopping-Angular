@@ -1,1 +1,24 @@
-<p>orders works!</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Order Number</th>
+      <th scope="col">Product Name</th>
+      <th scope="col">Quantity Required</th>
+      <th scope="col">Stock</th>
+      <th scope="col">Approve</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let order of orders; let i=index;">
+      <tr *ngFor="let orderitem of order.orderItems;let x=index;" >
+        <th scope="row">{{i+1}}</th>
+        <td>{{orderitem.product.name}}</td>
+        <td>{{orderitem.productQuantity}}</td>
+        <td>{{orderitem.product.stock}} </td>
+        <td [ngClass]="{'green':order.approval==true,
+        'red':order.approval==false}"><a *ngIf="x==0" (click)="Approve(order.id)">A<i class="fa-solid fa-hexagon-check"></i></a></td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

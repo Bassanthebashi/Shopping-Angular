@@ -9,6 +9,9 @@ import { ProductsComponent } from './components/products/products.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { ProductCardComponent } from './components/products/product-card/product-card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CartComponent } from './components/cart/cart.component';
+
 
 
 @NgModule({
@@ -19,12 +22,14 @@ import { HttpClientModule } from '@angular/common/http';
     ProductsComponent,
     OrdersComponent,
     ProductCardComponent,
+    CartComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
