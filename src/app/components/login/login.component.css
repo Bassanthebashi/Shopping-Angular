@@ -53,19 +53,20 @@ h1{
     position: relative;
 }
 .checkDiv{
-    visibility: hidden;
     font-weight: bold;
     padding-left: 10px;
     padding-bottom:10px ;
-    color: #388087;
-}
-.exclamation{
-    visibility: hidden;
-    position: absolute;
-    right: 8px;
-    top: 22px;
-    color: #388087;
+    color: red;
+    height: 20px;
 }
 #loginButton{
     margin-top: 1vh;
+}
+.log{
+    margin-top: 20px;
+}
+.log a{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
 }

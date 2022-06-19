@@ -2,11 +2,11 @@
 body{
     background-color:#f6f6f2;
     font-family: "indie", sans-serif;
-    color: #388087;
+    color: rgb(33, 37, 41);
     height: 97vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+   
 }
 @font-face {
     font-family: indie;

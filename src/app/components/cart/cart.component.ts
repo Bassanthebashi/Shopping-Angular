@@ -9,8 +9,8 @@ import { HttpClientService } from 'src/app/services/http-client.service';
   templateUrl: './cart.component.html',
 })
 export class CartComponent {
-  @Input() name: any;
-  @Input() products: { product: Product, Quantity: Number }[] = [];
+ 
+  @Input() products: { product: Product, Quantity: number }[] = [];
 
   constructor(public activeModal: NgbActiveModal, private http: HttpClientService, private carServ: CartService) { }
   SubmitOrder() {
@@ -39,10 +39,11 @@ export class CartComponent {
       "orderItems": orderItems
     }
 
-
+    console.log(order);
+    
     this.http.SubmitOrder(order).subscribe({
       next:(data)=>{
-        console.log(data);
+        this.products=[]
         
       },
       error:(err)=>{
@@ -50,6 +51,16 @@ export class CartComponent {
 
       },
     })
+   
   }
+  change(v:any,id:string){
+    
+    this.products.map(e=>{
+      if(e.product.id==id){
+        e.Quantity=v.target.value;
+      }
+    })
+  }
+  
 }
 

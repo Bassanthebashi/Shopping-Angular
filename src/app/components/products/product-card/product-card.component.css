@@ -1,23 +1,27 @@
 .container{
     display: flex;
+    justify-content: space-between;
     justify-items: center;
     align-items: center;
     box-shadow: 0 0 10px #6fb3b8;
     padding: 20px;
    background-color: white;
    margin: 2vw;
-   width: 400px;
+   width: 350px;
 }
 .info{
     display: flex;
     justify-items: center;
     align-items: center;
     flex-direction: column;
+   width: 170px;
+
 }
 button{
+    
     background-color: #388087;
     color: white;
-    width: 130px;
+    width: 90px;
     height: 35px;
     border:none;
     border-radius: 3px;
@@ -30,5 +34,5 @@ button:hover{
     background-color:#18383b;
 }
 .image img{
-    width: 200px;
+    width: 150px;
 }

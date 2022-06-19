@@ -1,18 +1,36 @@
 <div class="container">
-    <div class="form">
+    <form class="form" [formGroup]="form">
         <h1>Log In</h1>
         <div class="inputContainer">
-            <input type="email" id="email" placeholder="E-mail">
-            <i class="fas fa-exclamation-circle exclamation" id="emailExclamation"></i>
+            <input id="name" placeholder="User Name" formControlName="username">
         </div>
-        <div class="checkDiv" id="emailcheck"></div>
+        <div class="checkDiv" id="namecheck">
+
+            <div class="err" *ngIf="form.get('username')?.touched &&
+            form.get('username')?.invalid">
+                <div *ngIf="form.get('username')?.errors?.['required']">
+                    Required
+                </div>
+            </div>
+
+        </div>
 
         <div class="inputContainer">
-            <input type="password" id="password" placeholder="password">
-            <i class="fas fa-exclamation-circle exclamation" id="passwordExclamation"></i>
+            <input type="password" id="password" placeholder="password" formControlName="password">
         </div>
-        <div class="checkDiv" id="passwordCheck"></div>
+        <div class="checkDiv" id="passwordCheck">
+            <div class="err" *ngIf="form.get('password')?.touched &&
+            form.get('password')?.invalid">
+                <div *ngIf="form.get('password')?.errors?.['required']">
+                    Required
+                </div>
 
-        <button id="loginButton">Log In</button>
-    </div>
+            </div>
+            <div *ngIf="wrongUser" class="err">{{errorMessage}}</div>
+        </div>
+
+        <button id="loginButton" (click)="login()">Log In</button>
+    <p class="log">have no acount? <a routerLink="/register">Sign Up</a></p>
+
+    </form>
 </div>

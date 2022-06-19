@@ -12,7 +12,8 @@ button{
 button:hover{
     background-color:#18383b;
 }
-input{
+.num{
+    display: inline;
     width: 20px;
     height: 10px;
 

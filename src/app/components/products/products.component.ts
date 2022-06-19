@@ -30,7 +30,7 @@ export class ProductsComponent implements OnInit {
   }
   open() {
     const modalRef = this.modalService.open(CartComponent);
-    modalRef.componentInstance.name = 'World';
+    
     modalRef.componentInstance.products = this.cartserv.cartList;
   }
 
