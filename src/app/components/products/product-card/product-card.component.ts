@@ -9,7 +9,7 @@ import { CartComponent } from '../../cart/cart.component';
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit {
- @Input() product:Product={id:"",name:"Pen",description:"",price:"",stock:0};
+ @Input() product:Product={id:"",name:"Pen",description:"",price:"",stock:0,image:""};
   constructor(private cartserv:CartService,private modalService: NgbModal,
     ) { }
 

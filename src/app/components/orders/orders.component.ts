@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, Input } from '@angular/core';
 import { Order } from 'src/app/Models/Order';
 import { HttpClientService } from 'src/app/services/http-client.service';
 
@@ -9,9 +9,12 @@ import { HttpClientService } from 'src/app/services/http-client.service';
 })
 export class OrdersComponent implements OnInit {
 orders: Order []=[]
-  constructor(private http: HttpClientService, private ngZone:NgZone) { }
+  constructor(private http: HttpClientService) { }
 
   ngOnInit(): void {
+    this.GetOrders();
+  }
+  GetOrders(){
     this.http.getOrders().subscribe({
       next:(orders)=>{
         console.log(orders);
@@ -26,10 +29,7 @@ orders: Order []=[]
     this.http.ApproveOrder(orderId).subscribe({
       next:(mess)=>{console.log(mess);
        
-       this.ngZone.run(()=>{this.orders.map(e=>{
-        if(e.id==orderId)
-        e.approval=true;
-       })});
+        
       },
       error:(err)=>{console.log(err);
       }
@@ -39,9 +39,7 @@ orders: Order []=[]
     this.http.RejectOrder(orderId).subscribe({
       next:(mess)=>{console.log(mess);
        
-       this.orders.map(e=>{
-        if(e.id==orderId)
-        e.approval=false;})
+        
        
       },
       error:(err)=>{console.log(err);
