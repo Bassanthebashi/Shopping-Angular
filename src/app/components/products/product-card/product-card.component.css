@@ -17,7 +17,7 @@
    width: 170px;
 
 }
-button{
+#btn{
     
     background-color: #388087;
     color: white;
@@ -30,7 +30,7 @@ button{
    font-family: 'Courier New', Courier, monospace;
     
 }
-button:hover{
+#btn:hover{
     background-color:#18383b;
 }
 .image img{

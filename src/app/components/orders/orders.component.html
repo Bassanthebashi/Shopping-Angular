@@ -8,7 +8,7 @@
         <th scope="col">Product Name</th>
         <th scope="col">Quantity Required</th>
         <th scope="col">Stock</th>
-        <th scope="col">Approve</th>
+        <th scope="col">Approval</th>
         
       </tr>
     </thead>
@@ -19,9 +19,13 @@
           <td>{{orderitem.product.name}}</td>
           <td>{{orderitem.productQuantity}}</td>
           <td>{{orderitem.product.stock}} </td>
-          <td [ngClass]="{'green':order.approval==true,
-          'red':order.approval==false}" ><button  *ngIf="x==0" (click)="Approve(order.id)"
-           >A</button></td>
+          <td [ngClass]="{'green':order.approval==true,'red':order.approval==false}">
+            <ng-container *ngIf="order.approval==false">
+          <button  *ngIf="x==0" (click)="Approve(order.id)">A</button>
+        </ng-container>
+            
+        <p *ngIf="order.approval==true">Approved</p>
+        </td>
         </tr>
       </ng-container>
     </tbody>

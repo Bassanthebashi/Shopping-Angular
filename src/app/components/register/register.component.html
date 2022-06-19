@@ -1,50 +1,54 @@
-<div class="container">
-    <form class="form" [formGroup]="form">
-        <h1>Register</h1>
-        <div class="inputContainer">
-            <input id="name" placeholder="User Name" formControlName="username">
-        </div>
-        <div class="checkDiv" id="namecheck">
-
-            <div class="err" *ngIf="form.get('username')?.touched &&
-            form.get('username')?.invalid">
-                <div *ngIf="form.get('username')?.errors?.['required']">
-                    Required
-                </div>
+<div class="wrapper">
+    <div class="container">
+        <form class="form" [formGroup]="form">
+            <h1>Register</h1>
+            <div class="inputContainer">
+                <input id="email" placeholder="email" formControlName="email">
             </div>
+            <div class="checkDiv" id="emailcheck">
 
-        </div>
-        
-        <div class="inputContainer">
-            <input id="email" placeholder="email" formControlName="email">
-        </div>
-        <div class="checkDiv" id="emailcheck">
-
-            <div class="err" *ngIf="form.get('email')?.touched &&
-            form.get('email')?.invalid">
-                <div *ngIf="form.get('email')?.errors?.['required']">
-                    Required
-                </div>
-            </div>
-
-        </div>
-
-        <div class="inputContainer">
-            <input type="password" id="password" placeholder="password" formControlName="password">
-        </div>
-        <div class="checkDiv" id="passwordCheck">
-            <div class="err" *ngIf="form.get('password')?.touched &&
-            form.get('password')?.invalid">
-                <div *ngIf="form.get('password')?.errors?.['required']">
-                    Required
+                <div class="err" *ngIf="form.get('email')?.touched &&
+                form.get('email')?.invalid">
+                    <div *ngIf="form.get('email')?.errors?.['required']">
+                        Required
+                    </div>
                 </div>
 
             </div>
-            <div *ngIf="wrongUser" class="err">{{errorMessage}}</div>
-        </div>
 
-        <button id="regButton" (click)="Reg()">Sign Up</button>
-    <p class="log">already have acount? <a routerLink="/login">Log In</a></p>
+            <div class="inputContainer">
+                <input id="name" placeholder="User Name" formControlName="username">
+            </div>
+            <div class="checkDiv" id="namecheck">
 
-    </form>
+                <div class="err" *ngIf="form.get('username')?.touched &&
+                form.get('username')?.invalid">
+                    <div *ngIf="form.get('username')?.errors?.['required']">
+                        Required
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="inputContainer">
+                <input type="password" id="password" placeholder="password" formControlName="password">
+            </div>
+            <div class="checkDiv" id="passwordCheck">
+                <div class="err" *ngIf="form.get('password')?.touched &&
+                form.get('password')?.invalid">
+                    <div *ngIf="form.get('password')?.errors?.['required']">
+                        Required
+                    </div>
+
+                </div>
+                <div *ngIf="wrongUser" class="err">{{errorMessage}}</div>
+            </div>
+
+            <button id="regButton" (click)="Reg()">Sign Up</button>
+            <p class="log">already have acount? <a routerLink="/login">Log In</a></p>
+
+        </form>
+    </div>
 </div>

@@ -12,9 +12,11 @@ button{
 button:hover{
     background-color:#18383b;
 }
-.num{
-    display: inline;
-    width: 20px;
-    height: 10px;
 
+.wrap{
+   width: 40vw !important;
+   height: 20vh !important;
+    display: flex  !important;
+    justify-items: center  !important;
+    align-items: center  !important;
 }

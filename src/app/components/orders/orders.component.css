@@ -24,8 +24,22 @@ td a{
 
 }
 .green{
-    color: green !important;
+    color: #388087!important;
 }
 .red{
     color: red !important;
+}
+button{
+    background-color: #388087;
+    border: none;
+    border-radius:50px ;
+    width: 50px;
+    height: 50px;
+    color: #f6f6f2;
+    box-shadow: 0 0 10px #6fb3b8;
+    padding: 10px;
+}
+button:hover{
+    background-color:#18383b ;
+    
 }
