@@ -1,3 +1,23 @@
+# Shopping
+Simple shopping app. User can register, login, choose multiple products with specific quantity, put them in the cart, then submit an order.
+Admin can display all orders and approve or reject the order depending on the stock of products.
+![school tools](https://user-images.githubusercontent.com/69333870/175283441-f1eaf266-cf4b-47ce-bbd2-05b6744f130a.PNG)
+
+## Honorable Mentions
+I want to highlight the efforts that are done by [ Jamal Ali ](https://github.com/Jamal40) in reviewing my code and giving me many tips for clean and readable code.
+
+## Built With
+* Angular 13
+* HTmL5
+* CSS3
+## Admin Credentials
+```
+username: Bassantadmin
+password: aA1234456@
+```
+## Backend Repo By C#/.NET Core 6/EF Core/MSSQL
+[Shopping](https://github.com/Bassanthebashi/Shopping)
+
 # ShoppingApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
