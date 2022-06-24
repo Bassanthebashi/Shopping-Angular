@@ -14,8 +14,8 @@ import { UserDetails } from '../Models/User';
 export class AuthService {
 
   user: UserDetails = { name: "", role: "" }
-  url: string = "https://localhost:7085/api/";
-  //url: string = "https://shoppingbybassant.azurewebsites.net/";
+  
+  url: string = "https://shoppingbybassant.azurewebsites.net/api/";
   constructor(private http: HttpClient, private router: Router) { }
   login(user: Credentials):Observable<TokenDTO> {
     return this.http.post<TokenDTO>(this.url + 'User/Login', user).pipe(

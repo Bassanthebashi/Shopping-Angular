@@ -9,8 +9,8 @@ import { Product } from '../Models/Product';
 })
 export class HttpClientService {
 
-  //url: string = "https://shoppingbybassant.azurewebsites.net/";
-  url:string="https://localhost:7085/api/";
+  url: string = "https://shoppingbybassant.azurewebsites.net/api/";
+
   constructor(private http:HttpClient) { 
 
   }
