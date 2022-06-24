@@ -21,11 +21,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  Reg() {
+  Register() {
     this.errorMessage = []
     if (this.form.status == 'VALID') {
-
-      console.log(this.form.value);
 
       this.auth.register(this.form.value).subscribe(
         {

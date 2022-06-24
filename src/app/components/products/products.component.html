@@ -4,7 +4,7 @@
         They are our most powerful weapons. One child, one teacher,
         one book and one pen can change the world.</p>
     <div class="gallery">
-        <div *ngFor="let product of products">
+        <div *ngFor="let product of products$| async">
             <app-product-card [product]="product"></app-product-card>
         </div>
     </div>

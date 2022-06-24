@@ -9,24 +9,25 @@ import { Product } from '../Models/Product';
 })
 export class HttpClientService {
 
+  //url: string = "https://shoppingbybassant.azurewebsites.net/";
+  url:string="https://localhost:7085/api/";
   constructor(private http:HttpClient) { 
 
   }
-  getProducts(){
-    return this.http.get<Product[]>("https://localhost:7085/api/Products");
+  getProducts():Observable<Product[]>{
+    return this.http.get<Product[]>(this.url + "Products");
   }
-  getOrders(){
-    return this.http.get<Order[]>("https://localhost:7085/api/Order/IncludingItems");
+  getOrders():Observable<Order[]>{
+    return this.http.get<Order[]>(this.url +"Order/IncludingItems");
   }
-  ApproveOrder(orderId:string){
+  ApproveOrder(orderId:string):Observable<string>{
 
-    return this.http.post("https://localhost:7085/api/Order/Approve/"+orderId,{},{responseType: 'text'});
+    return this.http.post(this.url +"Order/Approve/"+orderId,{},{responseType: 'text'});
   }
-  RejectOrder(orderId:string){
-    return this.http.post("https://localhost:7085/api/Order/Reject/"+orderId,{},{responseType: 'text'});
+  RejectOrder(orderId:string):Observable<string>{
+    return this.http.post(this.url +"Order/Reject/"+orderId,{},{responseType: 'text'});
   }
-  SubmitOrder(order:Object ){
-    
-    return this.http.post("https://localhost:7085/api/Order",order)
+  SubmitOrder(order:Object ):Observable<string>{
+    return this.http.post<string>(this.url +"Order",order)
   }
 }

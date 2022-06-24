@@ -6,7 +6,7 @@
   <div class="wrap">
     <div *ngFor="let item of products">
       <p>{{item.product.name}}</p>
-      <input type="number" [value]="item.Quantity" class="num" (input)="change($event,item.product.id)">
+      <input type="number" [value]="item.Quantity" class="num" (input)="changeQuantity($event,item.product.id)">
     </div>
     <button (click)="SubmitOrder()" *ngIf="products.length!=0" class="custbtn">Submit Order</button>
     <p *ngIf="products.length==0">your cart is empty</p>

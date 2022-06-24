@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/Models/Product';
 import { HttpClientService } from 'src/app/services/http-client.service';
-
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -10,22 +10,10 @@ import { HttpClientService } from 'src/app/services/http-client.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
- products:Product[]=[]
-  constructor(private httpClient:HttpClientService) { }
+  products$!: Observable<Product[]>;
+  constructor(private httpClient: HttpClientService) { }
 
   ngOnInit(): void {
-    this.httpClient.getProducts().subscribe({
-      next:(products)=>{
-        console.log(products);
-        this.products=products;
-
-      },
-      error:(err)=>{
-        console.log(err);
-        
-      }
-    })
+    this.products$ = this.httpClient.getProducts();
   }
-  
-
 }

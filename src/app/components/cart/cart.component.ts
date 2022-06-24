@@ -3,6 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Product } from 'src/app/Models/Product';
 import { CartService } from 'src/app/services/cart.service';
 import { HttpClientService } from 'src/app/services/http-client.service';
+import {  tap } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -15,52 +16,31 @@ export class CartComponent {
   constructor(public activeModal: NgbActiveModal, private http: HttpClientService, private carServ: CartService) { }
   SubmitOrder() {
 
-    var orderItems: [{
+    var orderItems: {
       productId: string;
       productQuantity: number;
-    }] = [{
-      productId: "",
-      productQuantity: 0
-    }];
+    }[]=[]
 
-    orderItems.pop();
-
-    
-    this.carServ.cartList.map(e => {
-      var item = {
+   
+    orderItems=this.carServ.cartList.map(e => {
+      return  {
         "productId": e.product.id,
         "productQuantity": e.Quantity
       }
-      orderItems.push(item);
+      
     })
-    console.log(orderItems);
+
 
     var order = {
       "orderItems": orderItems
     }
-
-    console.log(order);
-    
-    this.http.SubmitOrder(order).subscribe({
-      next:(data)=>{
-        this.products=[];
-        this.carServ.cartList=[];
-        
-      },
-      error:(err)=>{
-        console.log(err);
-
-      },
-    })
+    this.http.SubmitOrder(order).pipe(tap(()=>{this.products=[];
+      this.carServ.cartList=[]})).subscribe()
    
   }
-  change(v:any,id:string){
-    
-    this.products.map(e=>{
-      if(e.product.id==id){
-        e.Quantity=v.target.value;
-      }
-    })
+  changeQuantity(event:any,id:string):void{
+    var productItem=this.products.find(p=>p.product.id==id);
+    productItem!.Quantity=event.target.value;
   }
   
 }

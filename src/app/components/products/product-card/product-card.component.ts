@@ -15,7 +15,6 @@ export class ProductCardComponent implements OnInit {
 
   ngOnInit(): void {
     
-    
   }
   AddToCart(product:Product){
     this.cartserv.AddToCart(product);
@@ -23,7 +22,6 @@ export class ProductCardComponent implements OnInit {
   }
   open() {
     const modalRef = this.modalService.open(CartComponent);
-    
     modalRef.componentInstance.products = this.cartserv.cartList;
   }
 

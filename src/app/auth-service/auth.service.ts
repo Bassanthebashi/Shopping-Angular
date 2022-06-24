@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable, tap } from 'rxjs';
+import { Credentials } from '../Models/Credentials';
+import { RegisterDTO } from '../Models/RegisterDTO';
+import { TokenDTO } from '../Models/TokenDTO';
+import { UserDetails } from '../Models/User';
 
 
 @Injectable({
@@ -9,46 +13,42 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthService {
 
+  user: UserDetails = { name: "", role: "" }
   url: string = "https://localhost:7085/api/";
+  //url: string = "https://shoppingbybassant.azurewebsites.net/";
   constructor(private http: HttpClient, private router: Router) { }
-  login(user: any) {
-    return this.http.post(this.url + 'User/Login', user)
+  login(user: Credentials):Observable<TokenDTO> {
+    return this.http.post<TokenDTO>(this.url + 'User/Login', user).pipe(
+      tap((res) => {
+        localStorage.setItem('token', res.token);
+        this.GetUserDetails();
+        this.router.navigate([""]);
+      })
+    );
   }
-  logout() {
+  logout():void {
     localStorage.clear();
     this.router.navigate(['login']);
   }
-  isLoggedIn() {
-    if (localStorage.getItem('token')) {
-      return true;
-    }
-    return false;
+  isLoggedIn():boolean {
+    return localStorage.getItem('token') ? true : false;
   }
-  currentUser() {
-    const helper = new JwtHelperService();
-    let token = localStorage.getItem('token');
-
-    if (!token) return;
-
-
-    return token;
-    //return helper.decodeToken(token);
+  currentUser():string|null {
+    return localStorage.getItem('token');
   }
-  register(user: any) {
+  register(user: RegisterDTO) {
     return this.http.post(this.url + 'User/Register', user)
   }
-  isAdmin() {
-    const helper = new JwtHelperService();
-    let token = localStorage.getItem('token');
-    if (!token) return false;
-
-    
-    const decodedToken = helper.decodeToken(token);
-    const role = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
-    console.log(role); 
-    if(role=="Admin")return true;
-    return false;
-
+  GetUserDetails():void {
+    this.http.get<UserDetails>(this.url + 'User').subscribe({
+      next: (user) => {
+        this.user.name = user.name;
+        this.user.role = user.role;
+      }
+    })
+  }
+  isAdmin():boolean {
+    return this.user.role == 'Admin' ? true : false;
   }
 
 }
